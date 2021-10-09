@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CodeAtoZ</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/content.css">
+		<link rel="stylesheet" href="/stylesheets/login.css">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+	<nav id="mainNavbar" class="navbar navbar-dark navbar-fixed-top">
+		<div class="container">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand nav-color" href="/">CodeAtoZ</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<% if(!currentUser){ %>
+							<li><a class="nav-link login-btn">Login</a></li>
+							<li><a class="nav-link" href="/register">Sign Up</a></li>
+						<% }else{ %>
+							<li><a class="nav-link" href="/profile/<%=currentUser.username%>"><%= currentUser.username %></a></li>
+							<li><a class="nav-link" href="/logout">Logout</a></li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</div>
+    </nav>
+	<div class="form-popup" id="myForm" style="display: none;">
+	  <form action="/login1" class="form-container" method="POST">
+		<h1 class="formpop">Login to CodeAtoZ</h1>
+		<!-- <div class="loginError">
+			<p>
+				Wrong login or password!
+			</p>
+		</div> -->
+		<label for="email"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="username" required>
+
+		<label for="psw"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="password" required>
+
+		<button type="submit" class="btn log">Login</button>
+		<button type="button" class="btn cancel">Close</button>
+	  </form>
+	</div>
+
+		
+		<%if(error && error.length > 0){%>
+			<div class="form-popup" id="myForm">
+			  <form action="/login1" class="form-container" method="POST">
+				<h1 class="formpop">Login to CodeAtoZ</h1>
+				<div class="alert alert-danger alert-dismissible" role="alert">
+					<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<%=error%>
+				</div>
+				<label for="email"><b>Username</b></label>
+				<input type="text" placeholder="Enter Username" name="username" required>
+
+				<label for="psw"><b>Password</b></label>
+				<input type="password" placeholder="Enter Password" name="password" required>
+
+				<button type="submit" class="btn log">Login</button>
+				<button type="button" class="btn cancel">Close</button>
+			  </form>
+			</div>
+		<%}%>
+		
+		
+<div class="container">
+	 <div class="jumbotron">
+		 <h1 class="display-4">Learn | Practice | Improve</h1>
+		 <p class="lead">Lorem Ipsum is simply dummy text of the printing and typesetting industry. It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+		 <hr class="my-4">
+		 <p>Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.</p>
+		 <p class="but lead">
+			 <a class="Learn btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+		 </p>
+	 </div>
+     <div class="row text-center" style="display:flex; flex-wrap: wrap;">
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Arrays</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Backtracking</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Big O Notation</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Binary Indexed Trees</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Binary Search Trees</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Binary Trees</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Bit Manipulation</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Bitmasking With DP</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Centroid Decomposition</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Computational Geometry</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Convex Hull</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Disjoint Set Union</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Divide and Conquer</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Fast Fourier Transforms</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Flows</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Game Theory</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Gaussian Elimination</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Graphs</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Greedy</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Heaps/Priority Queues</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Heavy Light Decomposition</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Linked List</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Maps and Hashmaps</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Matrix Exponentiation</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Matrices/ 2-D Arrays</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>MO's Algorithm</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Modulo Arithmetic</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Number Theory</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>OOPS</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Persistent Data Structures</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Recursion</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Searching</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		  <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Segment Trees</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Stacks</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>String</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Sorting</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Trees</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Tries</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Treaps</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+		 <div class="col-md-3 col-sm-6">
+			 <div class="thumbnail shadow-lg p-3 mb-5 bg-white rounded">
+				 <img src="https://miro.medium.com/max/768/0*TDrt1RUnaAF2JRD8.jpg">
+				 <div class="caption">
+					 <h4>Queues</h4>
+				 </div>
+				 <p>Learning Resources : 150</p>
+				<p>Problems : 150</p>
+				 <p>
+					 <a href="#" class="btn btn-primary">Explore</a>
+				 </p>
+			 </div>
+		 </div>
+	 </div>
+</div>
+		
+		<script>
+			  $('body').on('click', '.login-btn', function(e){
+					e.preventDefault();
+					$('.form-popup').fadeIn(300);
+		 	 });
+			 $('body').on('click', '.cancel', function(e){
+				 e.preventDefault();
+				$('.form-popup').fadeOut(300);
+		 	});
+			$('body').on('click','.close',function(e){
+				$('.alert').css("display","none");
+			});
+		</script>
+
+<%- include("../partials/footer") -%>

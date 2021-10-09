@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>CodeAtoZ</title>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+		<link rel="stylesheet" href="/stylesheets/profile.css">
+		<link rel="stylesheet" href="/stylesheets/login.css">
+		<link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600&display=swap" rel="stylesheet">
+		<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+    </head>
+    <body>
+	<nav id="mainNavbar" class="navbar navbar-dark navbar-fixed-top">
+		<div class="container">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<a class="navbar-brand nav-color" href="/">CodeAtoZ</a>
+				</div>
+				<div class="collapse navbar-collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<% if(!currentUser){ %>
+							<li><a class="nav-link login-btn">Login</a></li>
+							<li><a class="nav-link" href="/register">Sign Up</a></li>
+						<% }else{ %>
+							<li><a class="nav-link" href="#"><%= currentUser.username %></a></li>
+							<li><a class="nav-link" href="/logout">Logout</a></li>
+						<% } %>
+					</ul>
+				</div>
+			</div>
+		</div>
+    </nav>
+	<div class="form-popup" id="myForm" style="display: none;">
+	  <form action="/login1" class="form-container" method="POST">
+		<h1 class="formpop">Login to CodeAtoZ</h1>
+		<!-- <div class="loginError">
+			<p>
+				Wrong login or password!
+			</p>
+		</div> -->
+		<label for="email"><b>Username</b></label>
+		<input type="text" placeholder="Enter Username" name="username" required>
+
+		<label for="psw"><b>Password</b></label>
+		<input type="password" placeholder="Enter Password" name="password" required>
+
+		<button type="submit" class="btn log">Login</button>
+		<button type="button" class="btn cancel">Close</button>
+	  </form>
+	</div>
+
+	<script>
+		  $('body').on('click', '.login-btn', function(e){
+			e.preventDefault();
+			$('.form-popup').fadeIn(300);
+	  });
+		 $('body').on('click', '.cancel', function(e){
+			 e.preventDefault();
+			$('.form-popup').fadeOut(300);
+	  });
+	</script>
+		<div class="container">
+			<div class="profile-banner">
+				<img src="/uploads/<%=user.coverPhoto%>">
+			</div>
+			<div class="strip">
+				<p>
+					<%=user.first%> <%=user.last%>
+				<%	if(currentUser && currentUser.username===user.username){ %>
+					<a class="btn btn-xs btn-success edit" href="/profile/<%=user.username%>/edit" style="margin-left:500px;">Edit Profile</a>
+				<% } %>
+				</p>
+			</div>
+			<div class="profile-picture">
+				<img src="/uploads/<%=user.profilePhoto%>" class="expand">
+			</div>
+			<div class="profile-details">
+				<table class="table">
+					<tr style="height: 70px;">
+						<th scope="row" class="head col-xs-3"></th>
+						<td class="col-sm-9"></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Username:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;"><%=user.username%></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Country:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;"><%=user.country%></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Student/Professional:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;" ><%=user.status%></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Institution:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;" ><%=user.institution%></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Gender:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;" ><%=user.gender%></td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">LinkedIn:</th>
+						<td class="col-xs-9" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;" ><a href="<%=user.linkedIn%>"><%=user.linkedIn%></a></td>
+					</tr>
+					<% if(user.codeChef){ %>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">CodeChef:</th>
+						<td class="col-xs-9">
+							<table class="code-profile">
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:10px;">Username:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<a href="https://codechef.com/users/<%= user.codeChef %>" target="_blank"><%= user.codeChef %></a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Stars:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<% if(user.codeChef_stars){%>
+											<%= user.codeChef_stars %>
+										<% }else{ %>
+											-
+										<% } %>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Rating:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<% if(user.codeChef_rating){%>
+											<%= user.codeChef_rating %>
+										<% }else{ %>
+											-
+										<% } %>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<% } %>
+					<% if(user.codeForces){ %>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">Codeforces:</th>
+						<td class="col-xs-9">
+							<table class="code-profile">
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:10px;">Username:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<a target="_blank" href="https://codeforces.com/profile/<%= user.codeForces %>"><%= user.codeForces %></a>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Rank:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<% if(user.codeForces_rank){%>
+											<%= user.codeForces_rank %>
+										<% }else{ %>
+											-
+										<% } %>
+									</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Rating:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >
+										<% if(user.codeForces_rating){%>
+											<%= user.codeForces_rating %>
+										<% }else{ %>
+											-
+										<% } %>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<% } %>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">HackerRank:</th>
+						<td class="col-xs-9">
+							<table class="code-profile">
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:10px;">Username:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >sahayshambhavi</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Badges:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >4 star</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Ratings:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >1804</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<th scope="row" class="col-xs-3" style="padding-left: 56px; padding-top:15px; padding-bottom:15px;">LeetCode:</th>
+						<td class="col-xs-9">
+							<table class="code-profile">
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:10px;">Username:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >sahayshambhavi</td>
+								</tr>
+								<tr>
+									<th scope="row" class="col-xs-3" style="padding-top:15px; padding-bottom:15px;">Stars:</th>
+									<td class="col-xs-9" style="padding-top:15px; padding-bottom:15px;" >4 star</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
